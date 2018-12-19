@@ -3,7 +3,7 @@
 Maven project + TestNG 
 
 ## Project structure
-   Class SitePajes.java - facade pattern for initializing all pages from the site
+   Class SitePages.java - facade pattern for initializing all pages from the site
    
    package *pages* - contains all pages from the site (each web page it's separate class)
    
