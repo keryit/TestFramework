@@ -36,10 +36,6 @@ public class SimpleTest extends SetUp {
 
         sitePages.pageMortgagePaymentCalculator().pressBtnCalculate();
 
-        //getText() return empty string!!! need to research
-
-        System.out.println("The text is " + sitePages.pageMortgagePaymentCalculator().getPaymentResult());
-
         Assert.assertEquals(sitePages.pageMortgagePaymentCalculator().getPaymentResult(), "$726.35");
 
     }

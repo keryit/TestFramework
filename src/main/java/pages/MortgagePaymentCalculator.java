@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import utils.Waiter;
 
 public class MortgagePaymentCalculator {
 
@@ -47,7 +48,7 @@ public class MortgagePaymentCalculator {
     @CacheLookup
     private WebElement btnCalculate;
 
-    @FindBy(xpath = "//span[@id='paiement-resultats']")
+    @FindBy(xpath = "//span[@class='calculateur-resultats-total' and contains(text(),'$')]")
     @CacheLookup
     private WebElement paymentResult;
 
@@ -75,7 +76,7 @@ public class MortgagePaymentCalculator {
 
     public void selectPaymentFrequency(String value) {
         frequencySelector.click();
-        listOfFrequence.findElement(By.xpath("//li[contains(text(),'" + value + "')]")).click();
+        listOfFrequence.findElement(By.xpath("//li[normalize-space(text())='" + value + "']")).click();
     }
 
     public void setInterestRateValue(String value) {
@@ -88,6 +89,6 @@ public class MortgagePaymentCalculator {
     }
 
     public String getPaymentResult() {
-        return paymentResult.getText();
+        return Waiter.waitVisiblityElement(driver, paymentResult, 10).getText();
     }
 }
