@@ -48,7 +48,7 @@ public class MortgagePaymentCalculator {
     @CacheLookup
     private WebElement btnCalculate;
 
-    @FindBy(xpath = "//span[@class='calculateur-resultats-total' and contains(text(),'$')]")
+    @FindBy(xpath = "//span[@class='calculateur-resultats-total' and @id='paiement-resultats']")
     @CacheLookup
     private WebElement paymentResult;
 
@@ -89,6 +89,6 @@ public class MortgagePaymentCalculator {
     }
 
     public String getPaymentResult() {
-        return Waiter.waitVisiblityElement(driver, paymentResult, 10).getText();
+        return Waiter.waitVisiblityElement(driver, paymentResult, 10).getAttribute("innerHTML");
     }
 }
